@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import EventComponent from './events/EventComponent';
+import UserSearch from './ref/UserSearch';
 
 class App extends React.Component {
     render() {
         return <div>
-            <EventComponent />
+            <UserSearch />
         </div>
     }
 }
