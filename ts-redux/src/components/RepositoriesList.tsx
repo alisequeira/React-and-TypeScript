@@ -1,16 +1,17 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux' //we can use this function to manually dispatch an action creator
-import { actionCreators } from '../state';
+import { useSelector } from 'react-redux'//this hook is similar in nature to the mapStateToProp function 
+import { useActions } from '../hooks/useActions';
 
 const RepositoriesList: React.FC = () => {
     const [term, setTerm] = useState('');
-    const dispatch = useDispatch();
+    const { searchRepositories } = useActions();
+    const { loading, error, data } = useSelector((state: any) => state.repositories);
 
     const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
 
-        dispatch(actionCreators.searchRepositories(term));
+        searchRepositories(term);
     }
 
     return <div>
