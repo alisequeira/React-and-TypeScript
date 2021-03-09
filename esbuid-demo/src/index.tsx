@@ -19,12 +19,18 @@ const App = () => {
         startService();
     }, [])
 
-    const onClick = () => {
+    const onClick = async () => {
         if (!ref.current) {
             return;
         }
 
-        console.log(ref.current);
+        /* This operation is asynchronous in nature*/
+        const result = await ref.current.transform(input, {
+            loader: 'jsx', /* Tell what kind of code we're providing to it*/
+            target: 'es2015'/* This is use for the transpiling process*/
+        });
+
+        setCode(result.code);
     };
 
     return <div>
