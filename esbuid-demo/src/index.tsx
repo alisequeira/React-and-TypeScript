@@ -13,7 +13,7 @@ const App = () => {
     const startService = async () => {
         ref.current = await esbuild.startService({
             worker: true,
-            wasmURL: 'https://unpkg.com/esbuild-wasm@0.8.27/esbuild-wasm'
+            wasmURL: 'https://unpkg.com/esbuild-wasm@0.8.27/esbuild.wasm'
         });
     };
 
@@ -39,6 +39,14 @@ const App = () => {
 
         //console.log(result);
         setCode(result.outputFiles[0].text);
+
+        try {
+            //Function build in the browser 
+            //we can execute JS inside of a string
+            eval(result.outputFiles[0].text);
+        } catch (err) {
+            alert(err)
+        }
     };
 
     return <div>
