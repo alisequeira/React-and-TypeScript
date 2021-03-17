@@ -1,3 +1,4 @@
+import './resizable.css';
 import { ResizableBox } from 'react-resizable';
 
 interface ResizableProps {
@@ -7,7 +8,15 @@ interface ResizableProps {
 
 //children: It's going to be the thing that we want to make resizable
 const Resizable: React.FC<ResizableProps> = ({ direction, children }) => {
-    return <>{children}</>
+    return (
+        <ResizableBox
+            height={300}
+            width={300}
+            resizeHandles={['s']}
+        >
+            {children}
+        </ResizableBox>
+    );
 };
 
 export default Resizable;
