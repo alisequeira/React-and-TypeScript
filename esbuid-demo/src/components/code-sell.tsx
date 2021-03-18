@@ -27,7 +27,7 @@ const CodeCell = () => {
                 <Resizable direction="horizontal">
                     <CodeEditor initialValue="//Hi there!" onChange={(value) => setInput(value)} />
                 </Resizable>
-                <Preview code={code} />
+                <Preview code={code} err={err} />
             </div>
         </Resizable>
     );
