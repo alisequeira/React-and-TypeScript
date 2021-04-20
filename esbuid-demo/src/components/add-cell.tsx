@@ -1,8 +1,8 @@
-import "add-cell.css";
+import "./add-cell.css";
 import { useAction } from "../hooks/use-actions";
 
 interface AddCellProps {
-  nextCellId: string;
+  nextCellId: string | null;
 }
 
 const AddCell: React.FC<AddCellProps> = ({ nextCellId }) => {
