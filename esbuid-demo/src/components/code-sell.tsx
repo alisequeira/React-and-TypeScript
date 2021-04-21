@@ -13,6 +13,21 @@ interface CodeCellProps {
 const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
   const { updateCell, createBundle } = useAction();
   const bundle = useTypedSelector((state) => state.bundles[cell.id]);
+  const cumulativeCode = useTypedSelector((state) => {
+    const { data, order } = state.cells;
+    const orderCells = order.map((id) => data[id]);
+
+    const cumulativeCode = [];
+    for (let c of orderCells) {
+      if (c.type === "code") {
+        cumulativeCode.push(c.content);
+      }
+      if (c.id === cell.id) {
+        break;
+      }
+    }
+    return cumulativeCode;
+  });
 
   useEffect(() => {
     if (!bundle) {
